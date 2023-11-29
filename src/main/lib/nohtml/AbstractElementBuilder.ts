@@ -17,5 +17,10 @@ export default abstract class AbstractElementBuilder<T> {
         return this;
     }
 
+    public withInnerHtml(textContent: string): this {
+        this.element.textContent = textContent;
+        return this;
+    }
+
     abstract build(): T
 }

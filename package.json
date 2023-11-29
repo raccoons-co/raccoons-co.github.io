@@ -27,6 +27,7 @@
     "lint.packagejson": "npmPkgJsonLint . --ignorePath .npmpackagejsonlintignore",
     "lint.typescript": "eslint './src/**/*.ts'",
     "posttest": "npm-run-all lint.*",
+    "prebuild": "rimraf dist",
     "prepack": "npm run build",
     "test": "nyc ts-node src/test/EntryPoint"
   },

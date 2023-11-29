@@ -4,8 +4,7 @@
  *  @license MIT
  */
 
-
-import DivContainer from "./lib/nohtml/DivContainer.js";
+import AuthenticationPage from "./page/AuthenticationPage.js";
 
 export default class ApplicationUI {
 
@@ -20,8 +19,6 @@ export default class ApplicationUI {
     }
 
     public run(): void {
-        DivContainer.newBuilder()
-            .withParent(this.root)
-            .build();
+        new AuthenticationPage().handle(this.root);
     }
 }
