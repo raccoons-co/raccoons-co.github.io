@@ -4,7 +4,9 @@
  *  @license MIT
  */
 
-import AuthenticationPage from "./page/AuthenticationPage.js";
+import SpaRouter from "./lib/router/SpaRouter.js";
+import SpaPageMap from "./lib/router/SpaPageMap.js";
+import AuthenticationController from "./page/AuthenticationController.js";
 
 export default class ApplicationUI {
 
@@ -19,6 +21,11 @@ export default class ApplicationUI {
     }
 
     public run(): void {
-        new AuthenticationPage().handle(this.root);
+        const spaPageMap =
+            SpaPageMap.newBuilder()
+                .addPageController("/auth", new AuthenticationController())
+                .build();
+
+        new SpaRouter(spaPageMap, this.root).run()  ;
     }
 }

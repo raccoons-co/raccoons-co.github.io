@@ -5,15 +5,19 @@
  */
 
 import DivContainer from "../lib/nohtml/DivContainer.js";
-import PageHashUrl from "../lib/PageHashUrl.js";
-import AbstractPage from "./AbstractPage.js";
 
-@PageHashUrl("/auth")
-export default class AuthenticationPage extends AbstractPage {
+export default class AuthenticationPage {
 
-    protected render(pageRoot: HTMLElement): void {
+    private readonly pageRoot: HTMLElement;
+
+    constructor(pageRoot: HTMLElement) {
+        this.pageRoot = pageRoot;
+        this.render();
+    }
+
+    private render(): void {
         DivContainer.newBuilder()
-            .withParent(pageRoot)
+            .withParent(this.pageRoot)
             .withInnerHtml("Authentication Page")
             .build();
     }
