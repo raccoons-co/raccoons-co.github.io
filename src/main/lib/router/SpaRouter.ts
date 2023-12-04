@@ -5,14 +5,17 @@
  */
 
 import SpaPageMap from "./SpaPageMap.js";
+import SpaRedirectMap from "./SpaRedirectMap.js";
 
 export default class SpaRouter {
 
     private readonly pageMap: SpaPageMap;
+    private readonly redirects: SpaRedirectMap;
     private readonly pageRoot: HTMLElement;
 
-    constructor(pageMap: SpaPageMap, pageRoot: HTMLElement) {
+    constructor(pageMap: SpaPageMap, redirects: SpaRedirectMap, pageRoot: HTMLElement) {
         this.pageMap = pageMap;
+        this.redirects = redirects;
         this.pageRoot = pageRoot;
         this.init();
     }
@@ -20,7 +23,7 @@ export default class SpaRouter {
     /**
      * Runs this router.
      */
-    run() {
+    run(): void {
         this.pageChangeHandler();
     }
 
@@ -29,14 +32,27 @@ export default class SpaRouter {
     }
 
     private pageChangeHandler(): void {
-        const hashFragment = SpaRouter.hashFragment();
-        this.pageMap
-            .pageController(hashFragment)
-            ?.handle(this.pageRoot);
+
+        const currentPage = SpaRouter.currentPage();
+
+        const maybeRedirect = this.redirects.getTarget(currentPage);
+
+        maybeRedirect.ifPresentOrElse(
+            SpaRouter.redirectTo,
+            () => {
+                const maybeController = this.pageMap.pageController(currentPage);
+                maybeController.ifPresent((controller) => controller.handle(this.pageRoot));
+            }
+        );
     }
 
-    private static hashFragment() {
-        const hashFragment = window.location.hash || "#/";
-        return hashFragment.slice(1).toLowerCase();
+    private static currentPage(): string {
+        const hash = window.location.hash || "#/";
+        return hash.slice(1).toLowerCase();
+    }
+
+
+    private static redirectTo(targetPage: string): void {
+        window.location.hash = "#" + targetPage;
     }
 }

@@ -5,6 +5,7 @@
  */
 
 import DivContainer from "../lib/nohtml/DivContainer.js";
+import Button from "../lib/nohtml/Button.js";
 
 export default class AuthenticationPage {
 
@@ -16,9 +17,15 @@ export default class AuthenticationPage {
     }
 
     private render(): void {
-        DivContainer.newBuilder()
-            .withParent(this.pageRoot)
-            .withInnerHtml("Authentication Page")
+        const someDiv =
+            DivContainer.newBuilder()
+                .setParent(this.pageRoot)
+                .setTextContent("Authentication Page")
+                .build();
+
+        Button.newBuilder()
+            .setParent(someDiv.getNode())
+            .setTextContent("Sign in")
             .build();
     }
 }

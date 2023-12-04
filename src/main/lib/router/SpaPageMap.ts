@@ -5,6 +5,7 @@
  */
 
 import AuthenticationController from "../../page/AuthenticationController.js";
+import Optional from "../../../../ethics/src/main/Optional.js";
 
 export default class SpaPageMap {
 
@@ -30,9 +31,8 @@ export default class SpaPageMap {
         }
     }
 
-    public pageController(pageHashUrl: string): AuthenticationController | undefined {
-        console.log(this.pageMap)
-        return this.pageMap.get(pageHashUrl);
+    public pageController(pageHashUrl: string): Optional<AuthenticationController> {
+        return Optional.ofNullable(this.pageMap.get(pageHashUrl));
     }
 }
 

@@ -7,13 +7,13 @@
 import NoHtmlElement from "./NoHtmlElement.js";
 import AbstractElementBuilder from "./AbstractElementBuilder.js";
 
-export default class DivContainer extends NoHtmlElement {
+export default class Button extends NoHtmlElement {
 
-    public static newBuilder(): AbstractElementBuilder<DivContainer> {
-        return new class extends AbstractElementBuilder<DivContainer>{
+    public static newBuilder(): AbstractElementBuilder<Button> {
+        return new class extends AbstractElementBuilder<Button>{
 
             constructor() {
-                super("div");
+                super("button");
             }
         }
     }

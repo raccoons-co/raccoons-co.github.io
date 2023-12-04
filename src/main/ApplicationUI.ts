@@ -7,6 +7,7 @@
 import SpaRouter from "./lib/router/SpaRouter.js";
 import SpaPageMap from "./lib/router/SpaPageMap.js";
 import AuthenticationController from "./page/AuthenticationController.js";
+import SpaRedirectMap from "./lib/router/SpaRedirectMap.js";
 
 export default class ApplicationUI {
 
@@ -26,6 +27,11 @@ export default class ApplicationUI {
                 .addPageController("/auth", new AuthenticationController())
                 .build();
 
-        new SpaRouter(spaPageMap, this.root).run()  ;
+        const redirects =
+            SpaRedirectMap.newBuilder()
+                .addRedirect("/", "/auth")
+                .build();
+
+        new SpaRouter(spaPageMap, redirects, this.root).run();
     }
 }
