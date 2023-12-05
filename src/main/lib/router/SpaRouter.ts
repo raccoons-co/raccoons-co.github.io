@@ -20,11 +20,13 @@ export default class SpaRouter {
         this.init();
     }
 
-    /**
-     * Runs this router.
-     */
-    run(): void {
+    /** Runs this router. */
+    public run(): void {
         this.pageChangeHandler();
+    }
+
+    public static redirectTo(targetPage: string): void {
+        window.location.hash = "#" + targetPage;
     }
 
     private init(): void {
@@ -49,10 +51,5 @@ export default class SpaRouter {
     private static currentPage(): string {
         const hash = window.location.hash || "#/";
         return hash.slice(1).toLowerCase();
-    }
-
-
-    private static redirectTo(targetPage: string): void {
-        window.location.hash = "#" + targetPage;
     }
 }

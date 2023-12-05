@@ -1,0 +1,116 @@
+/*
+ * Copyright (C) 2019 Oleksii Kucheruk <oleksii.kucheruk@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+body {
+  background: #dcdcdc;
+  color: #dcdcdc;
+  font: 14px 'San Francisco', Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #ffa500;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #2ebe60;
+}
+
+.link {
+  margin: 6px 0;
+  float: left;
+  font-size: 12px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.form {
+  margin: 50px auto;
+  width: 280px;
+  border-radius: 7px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.5);
+  background: #363636;
+  padding: 20px 20px 13px;
+}
+
+.form h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.myrow {
+  margin-bottom: 7px;
+}
+
+.myrow  label {
+  float: left;
+  padding: 4px 0;
+  width: 35%;
+}
+
+.myrow-input{
+  float: right;
+  width: 65%;
+}
+
+.myrow-input input{
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  border: none;
+  background: #686868;
+  font-size: 13px;
+  color: #e6e6e6;
+}
+
+.myrow-input input[type="file"] {
+  background: inherit;
+}
+
+.myrow-input img {
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
+.error-message {
+  display: inline-block;
+  width: 100%;
+  color: #ffa500;
+  font-size: 11px;
+}
+
+.myrow .mybtn {
+  float: right;
+  border: none;
+  border-radius: 3px;
+  background-color: #686868;
+  padding: 5px 20px;
+  font-size: 14px;
+  color: #e6e6e6;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+.myrow .mybtn:hover {
+  background-color: #ff8000;
+}

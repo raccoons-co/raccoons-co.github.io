@@ -19,7 +19,7 @@ export default abstract class AbstractElementBuilder<T> {
         return this;
     }
 
-    public setClassName(className: string) {
+    public setClassName(className: string): this {
         this.element.className = className;
         return this;
     }
@@ -30,7 +30,7 @@ export default abstract class AbstractElementBuilder<T> {
     }
 
     /** Sets text content on a node. */
-    public setTextContent(textContent: string) {
+    public setTextContent(textContent: string): this {
         this.element.textContent = textContent;
         return this;
     }
