@@ -6,12 +6,12 @@
 
 import NoHtmlElement from "./NoHtmlElement.js";
 
-export default abstract class AbstractElementBuilder<T> {
+export default abstract class AbstractElementBuilder<T, E extends HTMLElement> {
 
-    protected readonly element: HTMLElement;
+    protected readonly element: E;
 
     protected constructor(tagName: string) {
-        this.element = document.createElement(tagName);
+        this.element = <E>document.createElement(tagName);
     }
 
     public setParent(parent: HTMLElement): this {
@@ -35,8 +35,7 @@ export default abstract class AbstractElementBuilder<T> {
         return this;
     }
 
-
     public build(): T {
-        return <T>new NoHtmlElement(this.element);
+        return <T>new NoHtmlElement<E>(this.element);
     }
 }

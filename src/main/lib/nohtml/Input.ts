@@ -6,11 +6,12 @@
 
 import NoHtmlElement from "./NoHtmlElement.js";
 import AbstractElementBuilder from "./AbstractElementBuilder.js";
+import InputElementBuilder from "./InputElementBuilder.js";
 
-export default class Input extends NoHtmlElement {
+export default class Input extends NoHtmlElement<HTMLInputElement> {
 
     public static newBuilder(): InputElementBuilder {
-        return new class extends AbstractElementBuilder<Input> implements InputElementBuilder {
+        return new class extends AbstractElementBuilder<Input, HTMLInputElement> implements InputElementBuilder {
 
             constructor() {
                 super("input");
@@ -18,13 +19,10 @@ export default class Input extends NoHtmlElement {
 
             /** Sets input control type. */
             public setType(type: string): this {
-                (this.element as HTMLInputElement).type = type;
+                this.element.type = type;
                 return this;
             }
         }
     }
 }
 
-interface InputElementBuilder extends AbstractElementBuilder<Input> {
-    setType(type: string): this;
-}

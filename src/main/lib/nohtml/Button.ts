@@ -7,10 +7,10 @@
 import NoHtmlElement from "./NoHtmlElement.js";
 import AbstractElementBuilder from "./AbstractElementBuilder.js";
 
-export default class Button extends NoHtmlElement {
+export default class Button extends NoHtmlElement<HTMLButtonElement> {
 
-    public static newBuilder(): AbstractElementBuilder<Button> {
-        return new class extends AbstractElementBuilder<Button>{
+    public static newBuilder(): AbstractElementBuilder<Button, HTMLButtonElement> {
+        return new class extends AbstractElementBuilder<Button, HTMLButtonElement>{
 
             constructor() {
                 super("button");

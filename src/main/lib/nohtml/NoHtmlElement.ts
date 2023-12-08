@@ -4,15 +4,15 @@
  *  @license MIT
  */
 
-export default class NoHtmlElement {
+export default class NoHtmlElement<E> {
 
-    private readonly element: HTMLElement;
+    private readonly element: E;
 
-    constructor(element: HTMLElement) {
+    constructor(element: E) {
         this.element = element;
     }
 
-    public getNode(): HTMLElement {
+    public getNode(): E {
         return this.element;
     }
 }

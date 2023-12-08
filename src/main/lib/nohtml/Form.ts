@@ -7,10 +7,10 @@
 import NoHtmlElement from "./NoHtmlElement.js";
 import AbstractElementBuilder from "./AbstractElementBuilder.js";
 
-export default class Form extends NoHtmlElement {
+export default class Form extends NoHtmlElement<HTMLFormElement> {
 
-    public static newBuilder(): AbstractElementBuilder<Form> {
-        return new class extends AbstractElementBuilder<Form>{
+    public static newBuilder(): AbstractElementBuilder<Form, HTMLFormElement> {
+        return new class extends AbstractElementBuilder<Form, HTMLFormElement> {
 
             constructor() {
                 super("form");

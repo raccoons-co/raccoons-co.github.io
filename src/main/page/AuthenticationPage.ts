@@ -10,7 +10,6 @@ import Button from "../lib/nohtml/Button.js";
 import Method from "../lib/router/Method.js";
 import Header from "../lib/nohtml/Header.js";
 import Label from "../lib/nohtml/Label.js";
-import NoHtmlElement from "../lib/nohtml/NoHtmlElement.js";
 import Input from "../lib/nohtml/Input.js";
 
 export default class AuthenticationPage {
@@ -35,7 +34,7 @@ export default class AuthenticationPage {
             .setInnerHtml("<h1>Raccoonizer</h1>")
             .build();
 
-        this.usernameRow(form);
+        this.usernameRow(form.getNode());
 
         const buttonRow =
             DivContainer.newBuilder()
@@ -64,10 +63,10 @@ export default class AuthenticationPage {
         return this;
     }
 
-    private usernameRow(parent: NoHtmlElement): void {
+    private usernameRow(parent: HTMLElement): void {
         const usernameRow =
             DivContainer.newBuilder()
-                .setParent(parent.getNode())
+                .setParent(parent)
                 .setClassName("myrow clearfix")
                 .build();
 
@@ -79,13 +78,12 @@ export default class AuthenticationPage {
         const myrowUsernameInput =
             DivContainer.newBuilder()
                 .setParent(usernameRow.getNode())
-                .setClassName('myrow-input')
+                .setClassName("myrow-input")
                 .build();
 
-            Input.newBuilder()
-                .setParent(myrowUsernameInput.getNode())
-                .setType('text')
-                .build();
-
+        Input.newBuilder()
+            .setParent(myrowUsernameInput.getNode())
+            .setType("text")
+            .build();
     }
 }
