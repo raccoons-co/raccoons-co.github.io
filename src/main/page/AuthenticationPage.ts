@@ -39,7 +39,6 @@ export default class AuthenticationPage {
         const buttonRow =
             DivContainer.newBuilder()
                 .setParent(form.getNode())
-                .setTextContent("Authentication Page")
                 .setClassName("myrow clearfix")
                 .build();
 

@@ -26,7 +26,6 @@ export default class AuthenticationPage {
         this.usernameRow(form.getNode());
         const buttonRow = DivContainer.newBuilder()
             .setParent(form.getNode())
-            .setTextContent("Authentication Page")
             .setClassName("myrow clearfix")
             .build();
         this.signInButton =
@@ -57,11 +56,11 @@ export default class AuthenticationPage {
             .build();
         const myrowUsernameInput = DivContainer.newBuilder()
             .setParent(usernameRow.getNode())
-            .setClassName('myrow-input')
+            .setClassName("myrow-input")
             .build();
         Input.newBuilder()
             .setParent(myrowUsernameInput.getNode())
-            .setType('text')
+            .setType("text")
             .build();
     }
 }
