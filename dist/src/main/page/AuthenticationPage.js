@@ -23,7 +23,8 @@ export default class AuthenticationPage {
             .setParent(form.getNode())
             .setInnerHtml("<h1>Raccoonizer</h1>")
             .build();
-        this.usernameRow(form.getNode());
+        this.labledInputRow(form.getNode(), "Username", "text");
+        this.labledInputRow(form.getNode(), "Password", "password");
         const buttonRow = DivContainer.newBuilder()
             .setParent(form.getNode())
             .setClassName("myrow clearfix")
@@ -45,22 +46,22 @@ export default class AuthenticationPage {
         });
         return this;
     }
-    usernameRow(parent) {
+    labledInputRow(parent, label, type) {
         const usernameRow = DivContainer.newBuilder()
             .setParent(parent)
             .setClassName("myrow clearfix")
             .build();
         Label.newBuilder()
             .setParent(usernameRow.getNode())
-            .setTextContent("Username")
+            .setTextContent(label)
             .build();
-        const myrowUsernameInput = DivContainer.newBuilder()
+        const myrowInput = DivContainer.newBuilder()
             .setParent(usernameRow.getNode())
             .setClassName("myrow-input")
             .build();
         Input.newBuilder()
-            .setParent(myrowUsernameInput.getNode())
-            .setType("text")
+            .setParent(myrowInput.getNode())
+            .setType(type)
             .build();
     }
 }

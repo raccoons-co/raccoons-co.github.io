@@ -34,7 +34,8 @@ export default class AuthenticationPage {
             .setInnerHtml("<h1>Raccoonizer</h1>")
             .build();
 
-        this.usernameRow(form.getNode());
+        this.labledInputRow(form.getNode(), "Username", "text");
+        this.labledInputRow(form.getNode(), "Password", "password");
 
         const buttonRow =
             DivContainer.newBuilder()
@@ -62,7 +63,7 @@ export default class AuthenticationPage {
         return this;
     }
 
-    private usernameRow(parent: HTMLElement): void {
+    private labledInputRow(parent: HTMLElement, label: string, type: string): void {
         const usernameRow =
             DivContainer.newBuilder()
                 .setParent(parent)
@@ -71,18 +72,18 @@ export default class AuthenticationPage {
 
         Label.newBuilder()
             .setParent(usernameRow.getNode())
-            .setTextContent("Username")
+            .setTextContent(label)
             .build();
 
-        const myrowUsernameInput =
+        const myrowInput =
             DivContainer.newBuilder()
                 .setParent(usernameRow.getNode())
                 .setClassName("myrow-input")
                 .build();
 
         Input.newBuilder()
-            .setParent(myrowUsernameInput.getNode())
-            .setType("text")
+            .setParent(myrowInput.getNode())
+            .setType(type)
             .build();
     }
 }
