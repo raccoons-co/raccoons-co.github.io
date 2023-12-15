@@ -9,8 +9,7 @@ import Form from "../lib/nohtml/Form.js";
 import Button from "../lib/nohtml/Button.js";
 import Method from "../lib/router/Method.js";
 import Header from "../lib/nohtml/Header.js";
-import Label from "../lib/nohtml/Label.js";
-import Input from "../lib/nohtml/Input.js";
+import LabeledInputRow from "../lib/nohtml/component/LabeledInputRow.js";
 
 export default class AuthenticationPage {
 
@@ -34,8 +33,16 @@ export default class AuthenticationPage {
             .setInnerHtml("<h1>Raccoonizer</h1>")
             .build();
 
-        this.labledInputRow(form.getNode(), "Username", "text");
-        this.labledInputRow(form.getNode(), "Password", "password");
+        LabeledInputRow.newBuilder()
+            .setParent(form.getNode())
+            .setLabel("Username")
+            .build();
+
+        LabeledInputRow.newBuilder()
+            .setParent(form.getNode())
+            .setLabel("Password")
+            .setInputType("password")
+            .build();
 
         const buttonRow =
             DivContainer.newBuilder()
@@ -61,29 +68,5 @@ export default class AuthenticationPage {
                 callback();
             });
         return this;
-    }
-
-    private labledInputRow(parent: HTMLElement, label: string, type: string): void {
-        const usernameRow =
-            DivContainer.newBuilder()
-                .setParent(parent)
-                .setClassName("myrow clearfix")
-                .build();
-
-        Label.newBuilder()
-            .setParent(usernameRow.getNode())
-            .setTextContent(label)
-            .build();
-
-        const myrowInput =
-            DivContainer.newBuilder()
-                .setParent(usernameRow.getNode())
-                .setClassName("myrow-input")
-                .build();
-
-        Input.newBuilder()
-            .setParent(myrowInput.getNode())
-            .setType(type)
-            .build();
     }
 }

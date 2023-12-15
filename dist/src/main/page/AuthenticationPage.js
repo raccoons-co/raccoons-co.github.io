@@ -9,6 +9,7 @@ import Button from "../lib/nohtml/Button.js";
 import Header from "../lib/nohtml/Header.js";
 import Label from "../lib/nohtml/Label.js";
 import Input from "../lib/nohtml/Input.js";
+import LabeledInputRow from "../lib/nohtml/component/LabeledInputRow.js";
 export default class AuthenticationPage {
     constructor(pageRoot) {
         this.pageRoot = pageRoot;
@@ -23,8 +24,17 @@ export default class AuthenticationPage {
             .setParent(form.getNode())
             .setInnerHtml("<h1>Raccoonizer</h1>")
             .build();
-        this.labledInputRow(form.getNode(), "Username", "text");
-        this.labledInputRow(form.getNode(), "Password", "password");
+        LabeledInputRow.newBuilder()
+            .setParent(form.getNode())
+            .setLabel("Username")
+            .build();
+        LabeledInputRow.newBuilder()
+            .setParent(form.getNode())
+            .setLabel("Password")
+            .setInputType("password")
+            .build();
+        // this.labledInputRow(form.getNode(), "Username", "text");
+        // this.labledInputRow(form.getNode(), "Password", "password");
         const buttonRow = DivContainer.newBuilder()
             .setParent(form.getNode())
             .setClassName("myrow clearfix")
