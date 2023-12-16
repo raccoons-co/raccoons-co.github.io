@@ -8,6 +8,7 @@ import SpaRouter from "./lib/router/SpaRouter.js";
 import SpaPageMap from "./lib/router/SpaPageMap.js";
 import AuthenticationController from "./page/AuthenticationController.js";
 import SpaRedirectMap from "./lib/router/SpaRedirectMap.js";
+import DashboardController from "./page/DashboardController.js";
 
 export default class ApplicationUI {
 
@@ -25,6 +26,7 @@ export default class ApplicationUI {
         const spaPageMap =
             SpaPageMap.newBuilder()
                 .addPageController("/auth", new AuthenticationController())
+                .addPageController("/dashboard", new DashboardController())
                 .build();
 
         const redirects =

@@ -1,0 +1,16 @@
+/*
+ *  Copyright 2023, Raccoons. Developing simple way to change.
+ *
+ *  @license MIT
+ */
+
+.file-browser {
+  border-radius: 4px;
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.5);
+  background: #363636;
+  padding: 20px;
+}
+
+.page-container {
+  padding-top: 20px;
+}

@@ -5,11 +5,13 @@
  */
 import AuthenticationPage from "./AuthenticationPage.js";
 import SpaRouter from "../lib/router/SpaRouter.js";
-export default class AuthenticationController {
+import Controller from "./Controller.js";
+export default class AuthenticationController extends Controller {
     constructor() {
+        super(...arguments);
         this.DASHBOARD_PAGE = "/dashboard";
     }
-    handle(pageRoot) {
+    handler(pageRoot) {
         pageRoot.innerHTML = "";
         new AuthenticationPage(pageRoot)
             .onSignIn(() => {

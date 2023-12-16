@@ -6,6 +6,7 @@
 
 import AuthenticationController from "../../page/AuthenticationController.js";
 import Optional from "../../../../ethics/src/main/Optional.js";
+import Controller from "../../page/Controller.js";
 
 export default class SpaPageMap {
 
@@ -38,7 +39,7 @@ export default class SpaPageMap {
 
 interface SpaPageMapBuilder {
 
-    addPageController(pageHashUrl: string, pageController: AuthenticationController): this;
+    addPageController(pageHashUrl: string, pageController: Controller): this;
 
     build(): SpaPageMap;
 }

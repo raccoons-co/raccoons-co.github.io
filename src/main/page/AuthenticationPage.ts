@@ -36,12 +36,14 @@ export default class AuthenticationPage {
         LabeledInputRow.newBuilder()
             .setParent(form.getNode())
             .setLabel("Username")
+            // .forId("login_field")
             .build();
 
         LabeledInputRow.newBuilder()
             .setParent(form.getNode())
             .setLabel("Password")
             .setInputType("password")
+            // .forId("password_field")
             .build();
 
         const buttonRow =
@@ -64,7 +66,6 @@ export default class AuthenticationPage {
             .addEventListener("click", (event: MouseEvent) => {
                 event.stopPropagation();
                 event.preventDefault();
-
                 callback();
             });
         return this;

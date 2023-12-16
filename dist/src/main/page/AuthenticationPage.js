@@ -25,11 +25,13 @@ export default class AuthenticationPage {
         LabeledInputRow.newBuilder()
             .setParent(form.getNode())
             .setLabel("Username")
+            // .forId("login_field")
             .build();
         LabeledInputRow.newBuilder()
             .setParent(form.getNode())
             .setLabel("Password")
             .setInputType("password")
+            // .forId("password_field")
             .build();
         const buttonRow = DivContainer.newBuilder()
             .setParent(form.getNode())
